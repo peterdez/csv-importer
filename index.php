@@ -69,9 +69,9 @@ function showData(elem = '', page_number = 1) {
                         alertItem += '<td>' + val.country_id + '</td>';
                         alertItem += '<td>' + val.common_name + '</td>';
                         alertItem += '<td>' + val.continent_code + '</td>';
-                        alertItem += '<td>' + val.currency_code + '</td>';
                         alertItem += '<td>' + val.official_name + '</td>';
                         alertItem += '<td>' + val.cur_common_name + '</td>';
+                        alertItem += '<td>' + val.currency_code + '</td>';
                         alertItem += '<td>' + val.symbol + '</td>';
                         alertItem += '</tr>';
                     });

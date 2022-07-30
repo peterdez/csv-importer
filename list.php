@@ -9,9 +9,9 @@ if (!empty($result)) {
             <th>#ID</th>
             <th>Country</th>
             <th>Continent</th>
-            <th>Currency</th>
             <th>Official Name</th>
             <th>Currency Name</th>
+            <th>Currency Code</th>
             <th>Symbol</th>
         </tr>
     </thead>

@@ -126,7 +126,7 @@ function showData(elem = '', page_number = 1) {
         <form action="" method="post" enctype="multipart/form-data">
             <input type="file" name="file" />
             <!--input type="submit" class="btn btn-primary" name="importSubmit" value="IMPORT"-->
-            <input type="submit" class="btn btn-primary" name="importCountriesSubmit" value="IMPORT"><
+            <input type="submit" class="btn btn-primary" name="importCountriesSubmit" value="IMPORT">
         </form>
     </div>
     <div class="col-md-12 importFrm" id="importFrmCurrencies" style="display: none;">

@@ -15,7 +15,7 @@ if (!empty($result)) {
             <th>Symbol</th>
         </tr>
     </thead>
-    <tbody id="txtHint">
+    <tbody id="countryRows">
         
      </tbody>
 </table>

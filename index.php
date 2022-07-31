@@ -42,10 +42,9 @@ if(!empty($_GET['status'])){
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Import CSV</title>
-    <!--script src="https://kit.fontawesome.com/194c4697bc.js" crossorigin="anonymous"></script-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!--link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"-->
-    <link href="vendor/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!--link href="vendor/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script>
 $( document ).ready(function() {
@@ -54,29 +53,32 @@ $( document ).ready(function() {
 window.addEventListener("load", showData(elem = ''));
 
 function showData(elem = '', page_number = 1) {
+    let pageUrl = window.location.href;
+    if(pageUrl[pageUrl.length-1] == "/"){
+        pageUrl = pageUrl.slice(0, -1);
+    }
     console.log(elem);
         $.ajax({
             method: "GET",
-            url: "api/country/list",
+            url: pageUrl + "/../api/country/list",
             data: {searchq: elem, page: page_number},
             dataType: "json"
         })
                 .done(function (data) {
                     $("#total_data").html(data.total_data);
-                    alertItem = '';
+                    var countryRowsHtml = '';
                     $.each(data.data, function (key, val) {
-                        alertItem += '<tr>';
-                        alertItem += '<td>' + val.country_id + '</td>';
-                        alertItem += '<td>' + val.common_name + '</td>';
-                        alertItem += '<td>' + val.continent_code + '</td>';
-                        alertItem += '<td>' + val.official_name + '</td>';
-                        alertItem += '<td>' + val.cur_common_name + '</td>';
-                        alertItem += '<td>' + val.currency_code + '</td>';
-                        alertItem += '<td>' + val.symbol + '</td>';
-                        alertItem += '</tr>';
+                        countryRowsHtml += '<tr>';
+                        countryRowsHtml += '<td>' + val.country_id + '</td>';
+                        countryRowsHtml += '<td>' + val.common_name + '</td>';
+                        countryRowsHtml += '<td>' + val.continent_code + '</td>';
+                        countryRowsHtml += '<td>' + val.official_name + '</td>';
+                        countryRowsHtml += '<td>' + val.cur_common_name + '</td>';
+                        countryRowsHtml += '<td>' + val.currency_code + '</td>';
+                        countryRowsHtml += '<td>' + val.symbol + '</td>';
+                        countryRowsHtml += '</tr>';
                     });
-                    $("#txtHint").html(alertItem);
-                    //document.getElementById('pagination_link').innerHTML = data.pagination;
+                    $("#countryRows").html(countryRowsHtml);
                     $("#pagination_link").html(data.pagination);
                 })
                 .fail(function (data) {

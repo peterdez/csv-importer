@@ -28,7 +28,6 @@ class Database
      */
     public function getConnection()
     {
-       // $conn = new \mysqli(self::HOST, self::USERNAME, self::PASSWORD, self::DATABASENAME);
        $connection = new \mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_DATABASE_NAME);
 
         if (mysqli_connect_errno()) {

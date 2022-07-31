@@ -57,6 +57,9 @@ function showData(elem = '', page_number = 1) {
     if(pageUrl[pageUrl.length-1] == "/"){
         pageUrl = pageUrl.slice(0, -1);
     }
+    else if(pageUrl[pageUrl.length-1] == "#"){
+        pageUrl = pageUrl.slice(0, -2);
+    }
     console.log(elem);
         $.ajax({
             method: "GET",

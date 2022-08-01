@@ -55,13 +55,13 @@ window.addEventListener("load", showData(elem = ''));
 function showData(elem = '', page_number = 1) {
     const pageUrlWithParams = window.location.href;
     let pageUrl = pageUrlWithParams.split('?')[0];
-    if(pageUrl[pageUrl.length-1] == "/"){
+    if(pageUrl[pageUrl.length-1] == "/" || pageUrl[pageUrl.length-1] == "#"){
         pageUrl = pageUrl.slice(0, -1);
     }
-    else if(pageUrl[pageUrl.length-1] == "#"){
+    else if(pageUrl[pageUrl.length-1] == "/#"){
         pageUrl = pageUrl.slice(0, -2);
     }
-    console.log(elem);
+    console.log(pageUrl);
         $.ajax({
             method: "GET",
             url: pageUrl + "/../api/country/list",

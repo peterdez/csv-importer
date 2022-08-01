@@ -1,1 +1,2 @@
 # csv-importer
+PHP web application that allows users to import countries and currencies database form CSV to a MySQL database. Created an API endpoint to return the countries and currencies dataset with pagination. Implemented a live search feature with AJAX whereby data is fetched from the database and results are shown as the user types in the search field and result narrow as the user continues to type.

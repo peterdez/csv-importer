@@ -47,11 +47,7 @@ if(!empty($_GET['status'])){
     <!--link href="vendor/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script>
-$( document ).ready(function() {
-    console.log("ready");
-});
-window.addEventListener("load", showData(elem = ''));
-
+$( document ).ready(showData(elem = ''));
 function showData(elem = '', page_number = 1) {
     const pageUrlWithParams = window.location.href;
     let pageUrl = pageUrlWithParams.split('?')[0];
@@ -61,7 +57,6 @@ function showData(elem = '', page_number = 1) {
     else if(pageUrl[pageUrl.length-1] == "/#"){
         pageUrl = pageUrl.slice(0, -2);
     }
-    console.log(pageUrl);
         $.ajax({
             method: "GET",
             url: pageUrl + "/../api/country/list",

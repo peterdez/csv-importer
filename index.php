@@ -53,7 +53,8 @@ $( document ).ready(function() {
 window.addEventListener("load", showData(elem = ''));
 
 function showData(elem = '', page_number = 1) {
-    let pageUrl = window.location.href;
+    const pageUrlWithParams = window.location.href;
+    let pageUrl = pageUrlWithParams.split('?')[0];
     if(pageUrl[pageUrl.length-1] == "/"){
         pageUrl = pageUrl.slice(0, -1);
     }
@@ -69,7 +70,7 @@ function showData(elem = '', page_number = 1) {
         })
                 .done(function (data) {
                     $("#total_data").html(data.total_data);
-                    var countryRowsHtml = '';
+                    let countryRowsHtml = '';
                     $.each(data.data, function (key, val) {
                         countryRowsHtml += '<tr>';
                         countryRowsHtml += '<td>' + val.country_id + '</td>';
